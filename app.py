@@ -21,7 +21,8 @@ from flask_cors import CORS
 
 # ── App setup ──────────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(BASE_DIR, "data")
+# Vercel has a read-only filesystem — only /tmp is writable
+DATA_DIR = "/tmp/portfolio_data" if os.environ.get("VERCEL") else os.path.join(BASE_DIR, "data")
 os.makedirs(DATA_DIR, exist_ok=True)
 
 app = Flask(__name__, static_folder=BASE_DIR, static_url_path="")
