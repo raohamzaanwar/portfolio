@@ -31,6 +31,10 @@
       <span>Help</span>
     </div>
     <p class="titlebar-title">Muhammad Hamza Anwar - Visual Studio Code</p>
+    <!-- Mobile-only theme toggle — visible when bottom bar is off-screen -->
+    <label class="dark-light-toggle titlebar-theme-toggle" title="Toggle light mode" onclick="var isLight=document.documentElement.getAttribute('data-mode')==='light'; toggleLightMode(!isLight); document.getElementById('dl-checkbox').checked=!isLight;">
+      <span id="tb-icon"></span>
+    </label>
     <div class="window-btns">
       <span class="win-btn minimize"></span>
       <span class="win-btn maximize"></span>
@@ -890,6 +894,20 @@
   </footer>
 
 </div><!-- /app -->
+
+<!-- ═══ THEME NOTIFICATION TOAST ══════════════════════════════════ -->
+<div id="theme-toast" class="theme-toast" role="dialog" aria-label="Theme preference">
+  <div class="theme-toast-icon">🎨</div>
+  <div class="theme-toast-body">
+    <p class="theme-toast-title">Choose your theme</p>
+    <p class="theme-toast-sub" id="theme-toast-sub">Detected: <strong id="theme-detected-label">Dark</strong> mode</p>
+    <div class="theme-toast-btns">
+      <button class="theme-toast-btn dark-btn" onclick="applyThemeChoice('dark')">🌙 Dark</button>
+      <button class="theme-toast-btn light-btn" onclick="applyThemeChoice('light')">☀️ Light</button>
+    </div>
+  </div>
+  <button class="theme-toast-close" onclick="dismissThemeToast()" aria-label="Dismiss">✕</button>
+</div>
 
 
 <!-- ═══ COMMAND PALETTE ════════════════════════════════════════════ -->

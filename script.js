@@ -477,16 +477,64 @@ function toggleLightMode(isLight) {
     document.documentElement.removeAttribute('data-mode');
   }
   localStorage.setItem('dl-mode', isLight ? 'light' : 'dark');
+  const cb = document.getElementById('dl-checkbox');
+  if (cb) cb.checked = isLight;
 }
 
-// Restore on load
-(function () {
-  const saved = localStorage.getItem('dl-mode');
-  if (saved === 'light') {
-    document.documentElement.setAttribute('data-mode', 'light');
-    const cb = document.getElementById('dl-checkbox');
-    if (cb) cb.checked = true;
+// ── Theme toast helpers ───────────────────────────────────────
+function applyThemeChoice(mode) {
+  toggleLightMode(mode === 'light');
+  dismissThemeToast();
+}
+
+function dismissThemeToast() {
+  const toast = document.getElementById('theme-toast');
+  if (toast) {
+    toast.classList.remove('show');
   }
+}
+
+// ── Auto-detect system theme + show toast on every load ───────
+(function () {
+  // 1. Detect system preference
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const systemMode = systemPrefersDark ? 'dark' : 'light';
+
+  // 2. Check if user has a saved preference; if not, apply system default
+  const saved = localStorage.getItem('dl-mode');
+  const activeMode = saved || systemMode;
+
+  // Apply the resolved theme immediately (no flash)
+  const isLight = activeMode === 'light';
+  if (isLight) {
+    document.documentElement.setAttribute('data-mode', 'light');
+  }
+  const cb = document.getElementById('dl-checkbox');
+  if (cb) cb.checked = isLight;
+
+  // 3. Show the toast on every page load so user can quickly switch
+  window.addEventListener('DOMContentLoaded', function () {
+    const toast = document.getElementById('theme-toast');
+    const label = document.getElementById('theme-detected-label');
+    if (!toast) return;
+
+    // Update "Detected: X" label to show the system preference
+    if (label) {
+      label.textContent = systemPrefersDark ? 'Dark' : 'Light';
+    }
+
+    // Highlight the currently active button
+    const darkBtn  = toast.querySelector('.dark-btn');
+    const lightBtn = toast.querySelector('.light-btn');
+    if (darkBtn)  darkBtn.style.borderColor  = activeMode === 'dark'  ? '#00ff41' : '';
+    if (lightBtn) lightBtn.style.borderColor = activeMode === 'light' ? '#fbbf24' : '';
+
+    // Slide in after a short delay so page renders first
+    setTimeout(function () { toast.classList.add('show'); }, 800);
+
+    // Auto-dismiss after 8 seconds if user ignores it
+    setTimeout(function () { dismissThemeToast(); }, 8800);
+  });
 })();
 
 // ── Command Palette ───────────────────────────────────────────
