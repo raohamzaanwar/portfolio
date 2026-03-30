@@ -143,6 +143,14 @@ ARTICLES = [
         "url": "https://medium.com/@hamzaanwarrao",
         "date": "2025-07-05",
     },
+    {
+        "id": 4,
+        "title": "Networking Essentials TryHackMe — Room Write-up",
+        "summary": "Full write-up covering the Networking Essentials room on TryHackMe, exploring core networking concepts and practical challenges.",
+        "tags": ["TryHackMe", "Networking", "Write-up"],
+        "url": "https://networking-essentials-thm-room-writ.vercel.app/",
+        "date": "2026-03-30",
+    },
 ]
 
 # ══════════════════════════════════════════════════════════════
