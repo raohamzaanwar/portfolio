@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Hamza Anwar - Visual Studio Code</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ═══ TITLEBAR ═══════════════════════════════════════════════════ -->
+  <section class="titlebar">
+    <svg class="vsc-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <mask id="m"><rect width="100" height="100" rx="15" fill="white"/></mask>
+      <g mask="url(#m)">
+        <rect width="100" height="100" fill="#0078d4"/>
+        <path d="M65.4 6.7L37.6 32 18 18.5 6.7 24.3v51.4L18 81.5l19.6-13.5L65.4 93.3 93.3 81V19L65.4 6.7zM73 68.4L52.5 50 73 31.6v36.8z" fill="white"/>
+      </g>
+    </svg>
+    <div class="titlebar-menu">
+      <span>File</span>
+      <span>Edit</span>
+      <span class="menu-view" id="cmd-palette-trigger" title="Command Palette (Ctrl+Shift+P)">View</span>
+      <span>Go</span>
+      <span>Run</span>
+      <span>Terminal</span>
+      <span>Help</span>
+    </div>
+    <p class="titlebar-title">Muhammad Hamza Anwar - Visual Studio Code</p>
+    <div class="window-btns">
+      <span class="win-btn minimize"></span>
+      <span class="win-btn maximize"></span>
+      <span class="win-btn close"></span>
+    </div>
+  </section>
+
+  <!-- ═══ BODY ═══════════════════════════════════════════════════════ -->
+  <div class="vsc-body">
+
+    <!-- Activity Sidebar (48px) -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="icon-container active" data-route="home" title="Explorer">
+          <svg viewBox="0 0 16 16" class="sb-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.71 4.29l-3-3L10 1H4L3 2v12l1 1h9l1-1V5l-.29-.71zM13 14H4V2h5v4h4v8zm-3-9V2l3 3h-3z"/></svg>
+        </div>
+        <div class="icon-container" data-route="github" title="GitHub">
+          <svg viewBox="0 0 16 16" class="sb-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </div>
+        <div class="icon-container" data-route="projects" title="Projects">
+          <svg viewBox="0 0 16 16" class="sb-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.47 3L3 4.47v7.06L4.47 13h7.06L13 11.53V4.47L11.53 3H4.47zm-.03 1h7.12L13 5.44v6.12L11.56 13H4.44L3 11.56V5.44L4.44 4zM6 6v4h1V7h2v3h1V6H6z"/></svg>
+        </div>
+        <div class="icon-container" data-route="articles" title="Articles">
+          <svg viewBox="0 0 16 16" class="sb-icon"><path d="M13.71 4.29l-3-3L10 1H4L3 2v12l1 1h9l1-1V5l-.29-.71zM13 14H4V2h5v4h4v8zm-3-9V2l3 3h-3zM6 7h5v1H6zm0 2h5v1H6zm0 2h3v1H6z"/></svg>
+        </div>
+        <div class="icon-container" data-route="contact" title="Contact">
+          <svg viewBox="0 0 16 16" class="sb-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 3L0 4v9l1 1h14l1-1V4l-1-1H1zm7 6.17L2.06 4h11.88L8 9.17zM1 5.06l4.9 4.23L1 13V5.06zm.69 8.44L6.5 9.73l1.5 1.3 1.5-1.3 4.81 3.77H1.69zM15 13l-4.9-3.71L15 5.06V13z"/></svg>
+        </div>
+        <div class="icon-container" data-route="experience" title="Experience">
+          <svg viewBox="0 0 16 16" class="sb-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9v1H14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5V3H6.5a.5.5 0 0 1-.5-.5zM8 4H2v8h12V4H8zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-2 4a2 2 0 0 1 4 0H6z"/></svg>
+        </div>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="icon-container" data-route="about" title="About">
+          <svg viewBox="0 0 16 16" class="sb-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm-6 8s-1 0-1-1 1-4 7-4 7 3 7 4-1 1-1 1H2z"/></svg>
+        </div>
+        <div class="icon-container" data-route="settings" title="Settings">
+          <svg viewBox="0 0 16 16" class="sb-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.1 4.4L8.6 2H7.4l-.5 2.4-.7.3-2-1.3-.9.8 1.3 2-.2.7-2.4.5v1.2l2.4.5.3.8-1.3 2 .8.8 2-1.3.8.3.4 2.3h1.2l.5-2.4.8-.3 2 1.3.8-.8-1.3-2 .3-.8 2.3-.4V7.4l-2.4-.5-.3-.8 1.3-2-.8-.8-2 1.3-.7-.2zM9.4 1l.5 2.4L12 2.1l2 2-1.4 2.1 2.4.6V9l-2.4.6L14 11.9l-2 2-2.1-1.4-.5 2.5H7l-.5-2.4-2.1 1.4-2-2 1.4-2.1L1.4 9V7l2.4-.5L2.1 4.1l2-2 2.1 1.4L6.6 1h2.8zM8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Explorer Panel (18vw) -->
+    <div class="explorer" id="explorer">
+      <p class="explorer-title">Explorer</p>
+      <div class="explorer-section">
+        <input type="checkbox" id="portfolio-toggle" class="section-checkbox" checked />
+        <label for="portfolio-toggle" class="section-heading">
+          <svg viewBox="0 0 16 16" class="chevron-icon"><path d="M6 4l4 4-4 4V4z"/></svg>
+          Portfolio
+        </label>
+        <div class="file-list" id="file-list">
+          <div class="file-entry active" data-route="home">
+            <span class="fi fi-jsx" style="background:#20d1fe;color:#1a1a2e">R</span>
+            <span>home.jsx</span>
+          </div>
+          <div class="file-entry" data-route="about">
+            <span class="fi fi-html" style="background:#e34c26;color:#fff">H</span>
+            <span>about.html</span>
+          </div>
+          <div class="file-entry" data-route="contact">
+            <span class="fi fi-css" style="background:#264de4;color:#fff">C</span>
+            <span>contact.css</span>
+          </div>
+          <div class="file-entry" data-route="projects">
+            <span class="fi fi-js" style="background:#f7df1e;color:#1a1a1a">J</span>
+            <span>projects.js</span>
+          </div>
+          <div class="file-entry" data-route="articles">
+            <span class="fi fi-json" style="background:#f7df1e;color:#1a1a1a">{</span>
+            <span>articles.json</span>
+          </div>
+          <div class="file-entry" data-route="github">
+            <span class="fi fi-md" style="background:#4285f4;color:#fff">M</span>
+            <span>github.md</span>
+          </div>
+          <div class="file-entry" data-route="experience">
+            <span class="fi fi-ts" style="background:#3178c6;color:#fff">T</span>
+            <span>experience.ts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editor Container -->
+    <div class="editor-container">
+
+      <!-- Tabs bar -->
+      <div class="tabsbar" id="tabsbar">
+        <div class="tab active" data-route="home">
+          <span class="tab-icon jsx-icon"></span>
+          <span>home.jsx</span>
+        </div>
+        <div class="tab" data-route="about">
+          <span class="tab-icon html-icon"></span>
+          <span>about.html</span>
+        </div>
+        <div class="tab" data-route="contact">
+          <span class="tab-icon css-icon"></span>
+          <span>contact.css</span>
+        </div>
+        <div class="tab" data-route="projects">
+          <span class="tab-icon js-icon"></span>
+          <span>projects.js</span>
+        </div>
+        <div class="tab" data-route="articles">
+          <span class="tab-icon json-icon"></span>
+          <span>articles.json</span>
+        </div>
+        <div class="tab" data-route="github">
+          <span class="tab-icon md-icon"></span>
+          <span>github.md</span>
+        </div>
+        <div class="tab" data-route="experience">
+          <span class="tab-icon ts-icon"></span>
+          <span>experience.ts</span>
+        </div>
+      </div>
+
+      <!-- Breadcrumb bar -->
+      <div class="breadcrumb-bar" id="breadcrumb-bar">
+        <svg viewBox="0 0 16 16" width="12" height="12" style="color:rgba(255,255,255,0.4);fill:currentColor;flex-shrink:0"><path d="M13.71 4.29l-3-3L10 1H4L3 2v12l1 1h9l1-1V5l-.29-.71zM13 14H4V2h5v4h4v8zm-3-9V2l3 3h-3z"/></svg>
+        PORTFOLIO
+        <span class="breadcrumb-sep">›</span>
+        <span id="breadcrumb-file">home.jsx</span>
+      </div>
+
+      <!-- Editor + Terminal -->
+      <div class="editor-with-terminal">
+
+        <!-- ─── MAIN CONTENT AREA ─── -->
+        <main id="main-editor">
+
+          <!-- ══ HOME PAGE ══════════════════════════════════════════ -->
+          <div class="page active" id="page-home">
+
+            <!-- ─── HERO ─────────────────────────────────────────── -->
+            <section class="hp-hero">
+              <div class="hp-hero-inner">
+                <div class="hp-hero-text">
+                  <p class="home-greeting">// Hello, World — I'm</p>
+                  <h1 class="home-name">Muhammad<br/>Hamza Anwar</h1>
+                  <p class="home-role">Penetration Tester &amp; Cybersecurity Professional</p>
+                  <div class="home-divider"></div>
+                  <p class="home-desc">
+                    I break systems to understand them — then help organizations stay unbroken.
+                    Dual-domain specialist in <strong>Offensive Security</strong> (CEH · CNSP · AppSec) and
+                    <strong>Defensive Operations</strong> (SOC · GRC · ISO 27001).<br/>
+                    NUST B.Sc. Software Engineering 2025 · 17th @ National CTF · 32+ published writeups.
+                  </p>
+                  <div class="home-actions">
+                    <button class="btn-primary" onclick="navigate('projects')">
+                      View Projects
+                      <svg viewBox="0 0 16 16" width="16" height="16"><path d="M6.5 3.5l4 4.5-4 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+                    </button>
+                    <button class="btn-secondary" onclick="navigate('experience')">Experience</button>
+                    <button class="btn-secondary" onclick="navigate('contact')">Contact Me</button>
+                  </div>
+                  <div class="home-links">
+                    <a href="https://github.com/hamzaanwarrao" target="_blank" rel="noopener" class="home-link">
+                      <svg viewBox="0 0 16 16" width="15" height="15"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" fill="currentColor"/></svg>
+                      GitHub
+                    </a>
+                    <span class="link-sep">·</span>
+                    <a href="https://linkedin.com/in/m-hamza-anwar" target="_blank" rel="noopener" class="home-link">
+                      <svg viewBox="0 0 16 16" width="15" height="15"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" fill="currentColor"/></svg>
+                      LinkedIn
+                    </a>
+                    <span class="link-sep">·</span>
+                    <a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener" class="home-link">
+                      <svg viewBox="0 0 16 16" width="15" height="15"><path d="M9.025 8c0 2.485-2.02 4.5-4.513 4.5A4.506 4.506 0 0 1 0 8c0-2.486 2.02-4.5 4.512-4.5A4.506 4.506 0 0 1 9.025 8zm4.95 0c0 2.34-1.007 4.236-2.256 4.236S9.463 10.34 9.463 8c0-2.34 1.006-4.236 2.256-4.236 1.25 0 2.256 1.897 2.256 4.236zM16 8c0 2.096-.355 3.795-.794 3.795-.438 0-.793-1.7-.793-3.795 0-2.096.355-3.795.794-3.795.438 0 .793 1.699.793 3.795z" fill="currentColor"/></svg>
+                      Medium
+                    </a>
+                    <span class="link-sep">·</span>
+                    <a href="mailto:hamzaanwarrao@gmail.com" class="home-link">
+                      <svg viewBox="0 0 16 16" width="15" height="15"><path fill-rule="evenodd" d="M1 3L0 4v9l1 1h14l1-1V4l-1-1H1zm7 6.17L2.06 4h11.88L8 9.17zM1 5.06l4.9 4.23L1 13V5.06zm.69 8.44L6.5 9.73l1.5 1.3 1.5-1.3 4.81 3.77H1.69zM15 13l-4.9-3.71L15 5.06V13z" fill="currentColor"/></svg>
+                      Email
+                    </a>
+                  </div>
+                </div>
+                <div class="hp-hero-photo">
+                  <div class="hp-photo-ring">
+                    <img src="profile.jpg" alt="Muhammad Hamza Anwar" class="hp-photo"
+                      onload="document.getElementById('hp-photo-ph').style.display='none'"
+                      onerror="this.style.display='none';document.getElementById('hp-photo-ph').style.display='flex'"/>
+                    <div class="hp-photo-placeholder" id="hp-photo-ph" style="display:none">
+                      <svg viewBox="0 0 64 64" width="64" height="64"><path d="M32 34c-9 0-16 7-16 16h32c0-9-7-16-16-16zm0-4a10 10 0 1 0 0-20 10 10 0 0 0 0 20z" fill="currentColor" opacity="0.35"/></svg>
+                    </div>
+                  </div>
+                  <div class="hp-status-badge">
+                    <span class="hp-status-dot"></span>
+                    Open to Work
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ─── STATS BAR ─────────────────────────────────────── -->
+            <section class="hp-stats">
+              <div class="hp-stat-item">
+                <span class="hp-stat-num">Pro Hacker</span>
+                <span class="hp-stat-lbl">HackTheBox Rank</span>
+              </div>
+              <div class="hp-stat-div"></div>
+              <div class="hp-stat-item">
+                <span class="hp-stat-num">Top 5%</span>
+                <span class="hp-stat-lbl">TryHackMe Global</span>
+              </div>
+              <div class="hp-stat-div"></div>
+              <div class="hp-stat-item">
+                <span class="hp-stat-num">17<sup>th</sup></span>
+                <span class="hp-stat-lbl">National CTF</span>
+              </div>
+              <div class="hp-stat-div"></div>
+              <div class="hp-stat-item">
+                <span class="hp-stat-num">32+</span>
+                <span class="hp-stat-lbl">Published Articles</span>
+              </div>
+              <div class="hp-stat-div"></div>
+              <div class="hp-stat-item">
+                <span class="hp-stat-num">5+</span>
+                <span class="hp-stat-lbl">Certifications</span>
+              </div>
+            </section>
+
+            <!-- ─── CURRENT ROLE ──────────────────────────────────── -->
+            <section class="hp-section">
+              <div class="hp-section-head">
+                <span class="hp-section-label">// experience</span>
+                <button class="hp-see-all" onclick="navigate('experience')">See full timeline →</button>
+              </div>
+              <div class="hp-role-card">
+                <div class="hp-role-header">
+                  <div class="hp-role-info">
+                    <div class="hp-role-badges">
+                      <span class="exp-domain-badge red-badge">Red Team</span>
+                      <span class="exp-domain-badge blue-badge">Blue Team</span>
+                      <span class="exp-domain-badge grc-badge">GRC</span>
+                    </div>
+                    <h3 class="hp-role-title">Vulnerability Penetration Tester · SOC Analyst · Compliance &amp; Risk Analyst</h3>
+                    <p class="hp-role-company">CareCloud — Remote, USA</p>
+                  </div>
+                  <span class="hp-role-date">Jun 2024 – Present</span>
+                </div>
+                <div class="hp-role-highlights">
+                  <div class="hp-highlight"><span class="hp-hl-dot red-hl"></span>Web &amp; mobile VAPT (OWASP Top 10, API security, IDOR, Auth bypass) using Burp Suite, Metasploit, OWASP ZAP</div>
+                  <div class="hp-highlight"><span class="hp-hl-dot blue-hl"></span>Managed Azure Sentinel SIEM · wrote KQL detection rules · reduced MTTR by 30%</div>
+                  <div class="hp-highlight"><span class="hp-hl-dot grc-hl"></span>Maintained ISO 27001 ISMS docs · conducted HIPAA &amp; NIST CSF gap assessments</div>
+                </div>
+                <div class="hp-role-tags">
+                  <span>Burp Suite</span><span>Metasploit</span><span>MS Sentinel</span>
+                  <span>KQL</span><span>ISO 27001</span><span>Python</span><span>Wazuh</span><span>NIST CSF</span>
+                </div>
+              </div>
+
+              <!-- Previous: NUST FYP -->
+              <div class="hp-role-card hp-role-card--secondary" style="margin-top:12px">
+                <div class="hp-role-header">
+                  <div class="hp-role-info">
+                    <span class="exp-domain-badge dev-badge">Research</span>
+                    <h3 class="hp-role-title">Final Year Project — ShellSage, AI Security Assistant</h3>
+                    <p class="hp-role-company">NUST — Islamabad, Pakistan</p>
+                  </div>
+                  <span class="hp-role-date">Sep 2024 – Jun 2025</span>
+                </div>
+                <p class="hp-role-desc">AI-powered Linux assistant enabling task automation via natural language · integrated Kali toolset (Nmap, Metasploit, SQLMap) · CLI + lightweight GUI.</p>
+                <div class="hp-role-tags">
+                  <span>Python</span><span>OpenAI API</span><span>NLP</span><span>Kali Linux</span><span>Bash</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- ─── SKILLS ─────────────────────────────────────────── -->
+            <section class="hp-section">
+              <div class="hp-section-head">
+                <span class="hp-section-label">// skills &amp; tools</span>
+              </div>
+              <div class="hp-skills-grid">
+                <div class="hp-skill-group">
+                  <p class="hp-skill-heading" style="color:#ff6b6b">⚔ Offensive</p>
+                  <div class="hp-skill-tags">
+                    <span>Burp Suite</span><span>Metasploit</span><span>Nmap</span><span>SQLMap</span>
+                    <span>BloodHound</span><span>Impacket</span><span>Mimikatz</span><span>Wireshark</span><span>OWASP ZAP</span>
+                  </div>
+                </div>
+                <div class="hp-skill-group">
+                  <p class="hp-skill-heading" style="color:#5ab4ff">🛡 Defensive / SOC</p>
+                  <div class="hp-skill-tags">
+                    <span>MS Sentinel</span><span>ELK Stack</span><span>Wazuh</span>
+                    <span>Defender for Endpoint</span><span>KQL</span><span>Entra ID</span><span>Intune</span><span>SOAR</span>
+                  </div>
+                </div>
+                <div class="hp-skill-group">
+                  <p class="hp-skill-heading" style="color:#d49dff">📋 GRC &amp; Compliance</p>
+                  <div class="hp-skill-tags">
+                    <span>ISO 27001</span><span>HIPAA</span><span>NIST CSF</span>
+                    <span>Risk Register</span><span>MITRE ATT&amp;CK</span><span>Audit Checklists</span>
+                  </div>
+                </div>
+                <div class="hp-skill-group">
+                  <p class="hp-skill-heading" style="color:#6effd0">💻 Development</p>
+                  <div class="hp-skill-tags">
+                    <span>Python</span><span>Bash</span><span>C++</span><span>SQL</span>
+                    <span>JavaScript</span><span>Git</span><span>Azure</span><span>AWS</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ─── CERTIFICATIONS ─────────────────────────────────── -->
+            <section class="hp-section">
+              <div class="hp-section-head">
+                <span class="hp-section-label">// certifications</span>
+              </div>
+              <div class="hp-certs-list">
+                <div class="hp-cert"><span class="hp-cert-dot" style="background:#f9826c"></span><strong>CEH</strong> — Certified Ethical Hacker <span class="hp-cert-issuer">EC-Council</span></div>
+                <div class="hp-cert"><span class="hp-cert-dot" style="background:#5ab4ff"></span><strong>CNSP</strong> — Certified Network Security Practitioner <span class="hp-cert-issuer">SecOps Group</span></div>
+                <div class="hp-cert"><span class="hp-cert-dot" style="background:#d49dff"></span><strong>CAP</strong> — Certified AppSec Practitioner <span class="hp-cert-issuer">SecOps Group</span></div>
+                <div class="hp-cert"><span class="hp-cert-dot" style="background:#6effd0"></span><strong>ISO 27001</strong> Lead Implementer <span class="hp-cert-issuer">Alnafi</span></div>
+                <div class="hp-cert hp-cert--inprogress"><span class="hp-cert-dot" style="background:rgba(255,255,255,0.25)"></span><strong>SC-200</strong> — Microsoft Security Operations Analyst <span class="hp-cert-issuer">Microsoft · In Progress</span></div>
+              </div>
+            </section>
+
+            <!-- ─── CTF ACHIEVEMENTS ──────────────────────────────── -->
+            <section class="hp-section">
+              <div class="hp-section-head">
+                <span class="hp-section-label">// ctf &amp; hacking achievements</span>
+                <button class="hp-see-all" onclick="navigate('github')">View stats →</button>
+              </div>
+              <div class="hp-ctf-grid">
+                <div class="hp-ctf-card">
+                  <span class="hp-ctf-trophy">🏆</span>
+                  <div>
+                    <p class="hp-ctf-title">17<sup>th</sup> place</p>
+                    <p class="hp-ctf-sub">National Cyber Challenge — Igit Pakistan, Delhi</p>
+                  </div>
+                </div>
+                <div class="hp-ctf-card">
+                  <span class="hp-ctf-trophy">⚡</span>
+                  <div>
+                    <p class="hp-ctf-title">Pro Hacker Rank</p>
+                    <p class="hp-ctf-sub">HackTheBox — 50+ machines compromised</p>
+                  </div>
+                </div>
+                <div class="hp-ctf-card">
+                  <span class="hp-ctf-trophy">🔥</span>
+                  <div>
+                    <p class="hp-ctf-title">Top 5% Globally</p>
+                    <p class="hp-ctf-sub">TryHackMe — 100+ rooms completed</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ─── FEATURED PROJECTS ─────────────────────────────── -->
+            <section class="hp-section">
+              <div class="hp-section-head">
+                <span class="hp-section-label">// featured projects</span>
+                <button class="hp-see-all" onclick="navigate('projects')">All projects →</button>
+              </div>
+              <div class="hp-projects-row">
+                <div class="hp-proj-card">
+                  <span class="hp-proj-badge">⭐ FYP</span>
+                  <h4 class="hp-proj-name">ShellSage — AI Security Assistant</h4>
+                  <p class="hp-proj-desc">AI-powered Linux assistant for task automation &amp; pentest command assistance via natural language using OpenAI API.</p>
+                  <div class="hp-proj-tags"><span>Python</span><span>OpenAI API</span><span>Kali Linux</span></div>
+                </div>
+                <div class="hp-proj-card">
+                  <h4 class="hp-proj-name">Brute-Force Detection System</h4>
+                  <p class="hp-proj-desc">Real-time log parser detecting SSH &amp; web brute-force patterns. Auto-blocks offending IPs via configurable firewall rules.</p>
+                  <div class="hp-proj-tags"><span>Python</span><span>Log Analysis</span><span>iptables</span></div>
+                </div>
+                <div class="hp-proj-card">
+                  <h4 class="hp-proj-name">Phishing Email Analyzer</h4>
+                  <p class="hp-proj-desc">ML-based phishing classifier parsing email headers, extracting IOCs, and scoring phishing probability with visual reports.</p>
+                  <div class="hp-proj-tags"><span>Python</span><span>ML</span><span>Email Forensics</span></div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ─── RECENT ARTICLES ───────────────────────────────── -->
+            <section class="hp-section">
+              <div class="hp-section-head">
+                <span class="hp-section-label">// recent articles</span>
+                <button class="hp-see-all" onclick="navigate('articles')">All 32+ →</button>
+              </div>
+              <div class="hp-articles-list">
+                <a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener" class="hp-article-item">
+                  <span class="art-tag blue">Blue Team</span>
+                  <span class="hp-art-title">KQL Queries for Threat Hunting in Sentinel</span>
+                  <span class="art-claps">👏 15</span>
+                </a>
+                <a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener" class="hp-article-item">
+                  <span class="art-tag tool">Tools</span>
+                  <span class="hp-art-title">Nmap Cheatsheet for Penetration Testers</span>
+                  <span class="art-claps">👏 22</span>
+                </a>
+                <a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener" class="hp-article-item">
+                  <span class="art-tag red">Red Team</span>
+                  <span class="hp-art-title">Active Directory Attacks Cheatsheet</span>
+                  <span class="art-claps">👏 12</span>
+                </a>
+                <a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener" class="hp-article-item">
+                  <span class="art-tag htb">HackTheBox</span>
+                  <span class="hp-art-title">Footprinting HackTheBox — Complete Walkthrough</span>
+                  <span class="art-claps">👏 61</span>
+                </a>
+              </div>
+            </section>
+
+            <!-- ─── CTA ───────────────────────────────────────────── -->
+            <section class="hp-cta">
+              <h2 class="hp-cta-title">Let's work together</h2>
+              <p class="hp-cta-desc">Open to remote and on-site cybersecurity opportunities — pentesting, SOC, GRC, and cloud security roles.</p>
+              <div class="hp-cta-actions">
+                <button class="btn-primary" onclick="navigate('contact')">
+                  Get in Touch
+                  <svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M1 3L0 4v9l1 1h14l1-1V4l-1-1H1zm7 6.17L2.06 4h11.88L8 9.17zM1 5.06l4.9 4.23L1 13V5.06zm.69 8.44L6.5 9.73l1.5 1.3 1.5-1.3 4.81 3.77H1.69zM15 13l-4.9-3.71L15 5.06V13z" fill="currentColor"/></svg>
+                </button>
+                <a href="https://linkedin.com/in/m-hamza-anwar" target="_blank" rel="noopener" class="btn-secondary">View LinkedIn</a>
+              </div>
+            </section>
+
+          </div>
+
+          <!-- ══ ABOUT PAGE ════════════════════════════════════════ -->
+          <div class="page" id="page-about">
+            <div class="section-title-row">
+              <h3 class="section-title">A Little Bit About Me</h3>
+            </div>
+            <div class="about-content">
+              <div class="about-card">
+                <div class="about-photo-wrap">
+                  <img src="profile.jpg" alt="Muhammad Hamza Anwar" class="about-photo"
+                       onerror="this.style.display='none'">
+                </div>
+                <div class="about-text">
+                  <p>
+                    I'm <strong>Muhammad Hamza Anwar</strong>, a cybersecurity professional based in Rawalpindi, Pakistan 🇵🇰.
+                    I specialize in both offensive and defensive security — from penetration testing and vulnerability assessment to SOC operations and GRC compliance.
+                  </p>
+                  <p>
+                    I hold a <strong>Bachelor of Software Engineering</strong> from <strong>National University of Sciences &amp; Technology (NUST)</strong>, graduating in 2025 with a GPA of 3.04/4.0.
+                    Currently working as a <strong>Vulnerability Penetration Tester at CareCloud</strong>, where I perform VAPT of web/mobile apps, manage SIEM alerts, and build automation playbooks.
+                  </p>
+                  <p>
+                    I'm an active CTF player — achieved <strong>17th place</strong> at the National Cyber Challenge in Delhi,
+                    maintain a <strong>Pro Hacker</strong> rank on HackTheBox, and am in the <strong>Top 5%</strong> on TryHackMe.
+                    I write technical security writeups on <a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">Medium (@hamzaanwarrao)</a> — 32+ articles published.
+                  </p>
+                  <p>
+                    <strong>Certifications:</strong> CEH (EC-Council) · CNSP (SecOps Group) · Certified AppSec Practitioner · ISO 27001 Lead Implementer · SC-200 (in progress).
+                  </p>
+                  <p>
+                    Open to <strong>remote and on-site</strong> cybersecurity opportunities — penetration testing, SOC analysis, GRC, and cloud security roles.
+                  </p>
+                  <div class="contact-inline">
+                    <a href="mailto:hamzaanwarrao@gmail.com">hamzaanwarrao@gmail.com</a>
+                    <span>·</span>
+                    <a href="tel:+923219520424">+92-321-9520424</a>
+                    <span>·</span>
+                    <a href="https://linkedin.com/in/m-hamza-anwar" target="_blank" rel="noopener">LinkedIn</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ CONTACT PAGE ══════════════════════════════════════ -->
+          <div class="page" id="page-contact">
+            <div class="section-title-row">
+              <h3 class="section-title">Reach Out Via Socials</h3>
+            </div>
+            <div class="contact-code">
+              <div class="code-block">
+                <div class="code-line"><span class="c-sel">.socials</span> <span class="c-op">{</span></div>
+                <div class="code-line"><span class="c-prop">  phone</span><span class="c-op">:</span>    <a href="tel:+923219520424" class="c-val link-val">+92-321-9520424</a><span class="c-op">;</span></div>
+                <div class="code-line"><span class="c-prop">  email</span><span class="c-op">:</span>    <a href="mailto:hamzaanwarrao@gmail.com" class="c-val link-val">hamzaanwarrao@gmail.com</a><span class="c-op">;</span></div>
+                <div class="code-line"><span class="c-prop">  linkedin</span><span class="c-op">:</span> <a href="https://linkedin.com/in/m-hamza-anwar" target="_blank" rel="noopener" class="c-val link-val">in/m-hamza-anwar</a><span class="c-op">;</span></div>
+                <div class="code-line"><span class="c-prop">  github</span><span class="c-op">:</span>   <a href="https://github.com/hamzaanwarrao" target="_blank" rel="noopener" class="c-val link-val">hamzaanwarrao</a><span class="c-op">;</span></div>
+                <div class="code-line"><span class="c-prop">  medium</span><span class="c-op">:</span>   <a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener" class="c-val link-val">@hamzaanwarrao</a><span class="c-op">;</span></div>
+                <div class="code-line"><span class="c-prop">  location</span><span class="c-op">:</span> <span class="c-str">"Rawalpindi, Pakistan"</span><span class="c-op">;</span></div>
+                <div class="code-line"><span class="c-prop">  status</span><span class="c-op">:</span>   <span class="c-str">"Open to Work — Remote / On-site"</span><span class="c-op">;</span></div>
+                <div class="code-line"><span class="c-op">}</span></div>
+              </div>
+              <div class="contact-form-wrap">
+                <h4 class="cf-title">Send a Message</h4>
+                <form class="contact-form" onsubmit="handleContact(event)">
+                  <input type="text" placeholder="Your name" id="cf-name" required />
+                  <input type="email" placeholder="your@email.com" id="cf-email" required />
+                  <textarea placeholder="Hello Hamza, I'd like to discuss..." id="cf-msg" rows="4" required></textarea>
+                  <button type="submit">Send →</button>
+                  <p class="cf-ok" id="cf-ok" style="display:none">✓ Message received!</p>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ PROJECTS PAGE ═════════════════════════════════════ -->
+          <div class="page" id="page-projects">
+            <div class="section-title-row">
+              <h3 class="section-title">Projects</h3>
+            </div>
+            <div class="projects-grid">
+
+              <div class="project-card featured-card">
+                <div class="project-header">
+                  <span class="project-badge">⭐ Final Year Project</span>
+                  <div class="project-links">
+                    <a href="#" title="GitHub" class="proj-link">
+                      <svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" fill="currentColor"/></svg>
+                    </a>
+                  </div>
+                </div>
+                <h3 class="project-name">ShellSage &mdash; AI Security Assistant</h3>
+                <p class="project-desc">AI-powered Linux assistant enabling task automation and system management through natural language. Integrates with Kali Linux for pentest command assistance and threat analysis using OpenAI API.</p>
+                <div class="project-tags"><span>Python</span><span>OpenAI API</span><span>NLP</span><span>Kali Linux</span><span>Bash</span></div>
+              </div>
+
+              <div class="project-card">
+                <h3 class="project-name">GUI Steganography Tool</h3>
+                <p class="project-desc">Desktop application to securely hide and extract messages within image files using LSB steganography. Features AES-256 encryption for double protection.</p>
+                <div class="project-tags"><span>Python</span><span>Tkinter</span><span>AES-256</span><span>LSB</span></div>
+              </div>
+
+              <div class="project-card">
+                <h3 class="project-name">Brute-Force Detection System</h3>
+                <p class="project-desc">Real-time log parser detecting SSH and web brute-force patterns. Automatically blocks offending IPs via firewall rules with configurable attack thresholds.</p>
+                <div class="project-tags"><span>Python</span><span>Log Analysis</span><span>iptables</span><span>Blue Team</span></div>
+              </div>
+
+              <div class="project-card">
+                <h3 class="project-name">Phishing Email Analyzer</h3>
+                <p class="project-desc">ML-based phishing classifier parsing email headers, extracting IOCs, and scoring phishing probability with visual reports and actionable threat intelligence.</p>
+                <div class="project-tags"><span>Python</span><span>Machine Learning</span><span>Email Forensics</span><span>IOC</span></div>
+              </div>
+
+              <div class="project-card">
+                <h3 class="project-name">Cloud Misconfiguration Scanner</h3>
+                <p class="project-desc">AWS &amp; Azure misconfiguration scanner checking IAM policies, S3/Blob exposure, security groups, and logging gaps. Generates compliance-ready reports.</p>
+                <div class="project-tags"><span>Python</span><span>Boto3</span><span>Azure SDK</span><span>Cloud Security</span></div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ══ ARTICLES PAGE ═════════════════════════════════════ -->
+          <div class="page" id="page-articles">
+            <div class="section-title-row">
+              <h3 class="section-title">You can read my articles at
+                <a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener" class="articles-link">medium.com/@hamzaanwarrao</a>
+              </h3>
+            </div>
+            <div class="articles-content">
+              <div class="articles-intro">
+                <p>32+ technical articles across HackTheBox walkthroughs, TryHackMe writeups, cybersecurity tools, web pentesting, and SOC operations.</p>
+              </div>
+              <div class="articles-list">
+                <div class="article-item"><span class="art-tag htb">HackTheBox</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">Footprinting HackTheBox</a><span class="art-claps">👏 61</span></div>
+                <div class="article-item"><span class="art-tag htb">HackTheBox</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">"Planning" HTB Machine Walkthrough</a><span class="art-claps">👏 8</span></div>
+                <div class="article-item"><span class="art-tag htb">HackTheBox</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">HTB Machine "Hospital" Walkthrough</a><span class="art-claps">👏 4</span></div>
+                <div class="article-item"><span class="art-tag htb">HackTheBox</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">HTB Machine "Nocturnal" Walkthrough</a><span class="art-claps">👏 3</span></div>
+                <div class="article-item"><span class="art-tag htb">HackTheBox</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">HTB Machine "TheFrizz" Walkthrough</a><span class="art-claps">👏 2</span></div>
+                <div class="article-item"><span class="art-tag htb">HackTheBox</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">Shells &amp; Payloads — HackTheBox</a><span class="art-claps">👏 7</span></div>
+                <div class="article-item"><span class="art-tag htb">HackTheBox</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">Footprinting — MySQL Module</a></div>
+                <div class="article-item"><span class="art-tag htb">HackTheBox</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">Footprinting — SMB Module</a><span class="art-claps">👏 1</span></div>
+                <div class="article-item"><span class="art-tag thm">TryHackMe</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">TryHackMe — Blue Room Walkthrough</a><span class="art-claps">👏 5</span></div>
+                <div class="article-item"><span class="art-tag thm">TryHackMe</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">TryHackMe — Anthem Room Walkthrough</a><span class="art-claps">👏 3</span></div>
+                <div class="article-item"><span class="art-tag red">Red Team</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">Active Directory Attacks Cheatsheet</a><span class="art-claps">👏 12</span></div>
+                <div class="article-item"><span class="art-tag red">Red Team</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">Web App Pentesting Methodology</a><span class="art-claps">👏 9</span></div>
+                <div class="article-item"><span class="art-tag blue">Blue Team</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">KQL Queries for Threat Hunting in Sentinel</a><span class="art-claps">👏 15</span></div>
+                <div class="article-item"><span class="art-tag blue">Blue Team</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">Building a SIEM with ELK Stack</a><span class="art-claps">👏 11</span></div>
+                <div class="article-item"><span class="art-tag tool">Tools</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">Burp Suite for Beginners — Complete Guide</a><span class="art-claps">👏 18</span></div>
+                <div class="article-item"><span class="art-tag tool">Tools</span><a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener">Nmap Cheatsheet for Penetration Testers</a><span class="art-claps">👏 22</span></div>
+              </div>
+              <div class="articles-cta">
+                <a href="https://medium.com/@hamzaanwarrao" target="_blank" rel="noopener" class="read-more-btn">Read All 32+ Articles on Medium →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ GITHUB PAGE ═══════════════════════════════════════ -->
+          <div class="page" id="page-github">
+            <div class="section-title-row">
+              <h3 class="section-title">
+                Find me on GitHub at
+                <a href="https://github.com/hamzaanwarrao" target="_blank" rel="noopener" class="articles-link">github.com/hamzaanwarrao</a>
+              </h3>
+            </div>
+            <div class="github-content">
+              <div class="gh-stats-grid">
+                <div class="gh-stat"><span class="gh-num">32+</span><span class="gh-lbl">Medium Articles</span></div>
+                <div class="gh-stat"><span class="gh-num">5+</span><span class="gh-lbl">Projects</span></div>
+                <div class="gh-stat"><span class="gh-num">17th</span><span class="gh-lbl">National CTF</span></div>
+                <div class="gh-stat"><span class="gh-num">Pro Hacker</span><span class="gh-lbl">HackTheBox Rank</span></div>
+              </div>
+              <div class="gh-langs">
+                <h4>Languages &amp; Tools</h4>
+                <div class="lang-tags">
+                  <span>Python</span><span>Bash</span><span>C++</span><span>SQL</span>
+                  <span>Metasploit</span><span>Burp Suite</span><span>Nmap</span><span>Wireshark</span>
+                  <span>Microsoft Sentinel</span><span>ELK Stack</span><span>Wazuh</span><span>Azure</span>
+                  <span>BloodHound</span><span>Impacket</span><span>SQLMap</span><span>OWASP ZAP</span>
+                </div>
+              </div>
+              <div class="gh-contribs">
+                <img src="https://ghchart.rshah.org/f9826c/hamzaanwarrao" alt="GitHub Contributions" class="gh-chart" onerror="this.style.display='none'" />
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ SETTINGS PAGE ═════════════════════════════════════ -->
+          <div class="page" id="page-settings">
+            <div class="section-title-row">
+              <h3 class="section-title">Settings</h3>
+            </div>
+            <div class="settings-content">
+              <div class="settings-group">
+                <h4>Color Theme</h4>
+                <div class="theme-btns">
+                  <button class="theme-btn active" data-theme="github-dark">GitHub Dark</button>
+                  <button class="theme-btn" data-theme="dracula">Dracula</button>
+                  <button class="theme-btn" data-theme="one-dark">One Dark Pro</button>
+                  <button class="theme-btn" data-theme="nord">Nord</button>
+                  <button class="theme-btn" data-theme="night-owl">Night Owl</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ EXPERIENCE PAGE ════════════════════════════════════ -->
+          <div class="page" id="page-experience">
+            <div class="section-title-row">
+              <h3 class="section-title">Professional Experience</h3>
+            </div>
+
+            <!-- Legend -->
+            <div class="exp-legend">
+              <span class="exp-legend-dot red-team"></span><span>Red Team / Offensive</span>
+              <span class="exp-legend-dot blue-team"></span><span>Blue Team / Defensive</span>
+              <span class="exp-legend-dot grc"></span><span>GRC / Compliance</span>
+              <span class="exp-legend-dot dev"></span><span>Development / Research</span>
+            </div>
+
+            <!-- Timeline -->
+            <div class="exp-timeline">
+
+              <!-- CareCloud ─ Red Team -->
+              <div class="exp-card-wrap" data-domain="red">
+                <div class="exp-card" data-tilt>
+                  <div class="exp-card-glow"></div>
+                  <div class="exp-card-inner">
+                    <div class="exp-card-header">
+                      <div>
+                        <span class="exp-domain-badge red-badge">Red Team</span>
+                        <h3 class="exp-role">Vulnerability Penetration Tester</h3>
+                        <p class="exp-company">CareCloud &mdash; Remote, USA</p>
+                      </div>
+                      <span class="exp-date">Jun 2024 &ndash; Present</span>
+                    </div>
+                    <ul class="exp-bullets">
+                      <li>Web &amp; mobile VAPT (OWASP Top 10, API security, IDOR, Auth bypass)</li>
+                      <li>Manual &amp; automated exploitation using Burp Suite, OWASP ZAP, Metasploit</li>
+                      <li>Developed custom Python scripts for payload automation &amp; recon</li>
+                      <li>Delivered detailed CVE-style vulnerability reports with CVSS scoring</li>
+                      <li>Performed network scanning with Nmap &amp; conducted phishing simulations</li>
+                    </ul>
+                    <div class="exp-tags">
+                      <span>Burp Suite</span><span>Metasploit</span><span>OWASP ZAP</span>
+                      <span>Python</span><span>Nmap</span><span>CVSS</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CareCloud ─ Blue Team -->
+              <div class="exp-card-wrap" data-domain="blue">
+                <div class="exp-card" data-tilt>
+                  <div class="exp-card-glow"></div>
+                  <div class="exp-card-inner">
+                    <div class="exp-card-header">
+                      <div>
+                        <span class="exp-domain-badge blue-badge">Blue Team</span>
+                        <h3 class="exp-role">SOC Analyst (concurrent)</h3>
+                        <p class="exp-company">CareCloud &mdash; Remote, USA</p>
+                      </div>
+                      <span class="exp-date">Jun 2024 &ndash; Present</span>
+                    </div>
+                    <ul class="exp-bullets">
+                      <li>Managed Azure Sentinel SIEM &mdash; triaged L1/L2 alerts and reduced MTTR by 30%</li>
+                      <li>Wrote KQL detection rules and correlation queries for MITRE ATT&amp;CK TTPs</li>
+                      <li>Investigated endpoint incidents with Microsoft Defender for Endpoint</li>
+                      <li>Deployed Wazuh agents and built ELK dashboards for log visualization</li>
+                      <li>Built automated SOAR playbooks to contain phishing and malware alerts</li>
+                    </ul>
+                    <div class="exp-tags">
+                      <span>MS Sentinel</span><span>KQL</span><span>Wazuh</span>
+                      <span>ELK Stack</span><span>Defender</span><span>SOAR</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CareCloud ─ GRC -->
+              <div class="exp-card-wrap" data-domain="grc">
+                <div class="exp-card" data-tilt>
+                  <div class="exp-card-glow"></div>
+                  <div class="exp-card-inner">
+                    <div class="exp-card-header">
+                      <div>
+                        <span class="exp-domain-badge grc-badge">GRC</span>
+                        <h3 class="exp-role">Compliance &amp; Risk Analyst (concurrent)</h3>
+                        <p class="exp-company">CareCloud &mdash; Remote, USA</p>
+                      </div>
+                      <span class="exp-date">Jun 2024 &ndash; Present</span>
+                    </div>
+                    <ul class="exp-bullets">
+                      <li>Maintained ISO 27001 ISMS documentation and internal audit checklists</li>
+                      <li>Conducted HIPAA &amp; NIST CSF gap assessments for cloud environments</li>
+                      <li>Managed risk register, treatment plans, and security policy reviews</li>
+                      <li>Configured Microsoft Intune policies for endpoint compliance enforcement</li>
+                      <li>Prepared evidence packs and liaised with external auditors</li>
+                    </ul>
+                    <div class="exp-tags">
+                      <span>ISO 27001</span><span>HIPAA</span><span>NIST CSF</span>
+                      <span>Intune</span><span>Entra ID</span><span>Risk Register</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- NUST FYP ─ Dev/Research -->
+              <div class="exp-card-wrap" data-domain="dev">
+                <div class="exp-card" data-tilt>
+                  <div class="exp-card-glow"></div>
+                  <div class="exp-card-inner">
+                    <div class="exp-card-header">
+                      <div>
+                        <span class="exp-domain-badge dev-badge">Research</span>
+                        <h3 class="exp-role">Final Year Project &mdash; ShellSage</h3>
+                        <p class="exp-company">NUST &mdash; Islamabad, Pakistan</p>
+                      </div>
+                      <span class="exp-date">Sep 2024 &ndash; Jun 2025</span>
+                    </div>
+                    <ul class="exp-bullets">
+                      <li>Built an AI-powered Linux security assistant using OpenAI API + Python</li>
+                      <li>Natural language → shell command translation with context-aware safety filters</li>
+                      <li>Integrated Kali Linux toolset (Nmap, Metasploit, SQLMap) via subprocess orchestration</li>
+                      <li>Designed CLI and lightweight GUI with real-time threat analysis output</li>
+                    </ul>
+                    <div class="exp-tags">
+                      <span>Python</span><span>OpenAI API</span><span>NLP</span>
+                      <span>Kali Linux</span><span>Bash</span><span>Tkinter</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CTF ─ Red Team -->
+              <div class="exp-card-wrap" data-domain="red">
+                <div class="exp-card" data-tilt>
+                  <div class="exp-card-glow"></div>
+                  <div class="exp-card-inner">
+                    <div class="exp-card-header">
+                      <div>
+                        <span class="exp-domain-badge red-badge">Red Team</span>
+                        <h3 class="exp-role">CTF Competitor &amp; Security Researcher</h3>
+                        <p class="exp-company">HackTheBox · TryHackMe · National CTF</p>
+                      </div>
+                      <span class="exp-date">2022 &ndash; Present</span>
+                    </div>
+                    <ul class="exp-bullets">
+                      <li>17th place &mdash; National Cyber Challenge (Igit Pakistan, Delhi)</li>
+                      <li>HackTheBox <strong>Pro Hacker</strong> rank — 50+ machines compromised</li>
+                      <li>TryHackMe <strong>Top 5%</strong> globally across 100+ rooms</li>
+                      <li>Published 32+ technical writeups on Medium covering AD, Web, and Forensics</li>
+                    </ul>
+                    <div class="exp-tags">
+                      <span>HTB</span><span>TryHackMe</span><span>CTF</span>
+                      <span>Active Directory</span><span>Web Exploitation</span><span>Forensics</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /exp-timeline -->
+          </div><!-- /page-experience -->
+
+        </main><!-- /main-editor -->
+
+        <!-- Terminal panel (hidden by default) -->
+        <div class="terminal-panel" id="terminal-panel" style="display:none">
+          <div class="terminal-header">
+            <div class="term-tabs">
+              <span class="term-tab active">TERMINAL</span>
+            </div>
+            <div class="term-actions">
+              <button onclick="toggleTerminal()" title="Close Terminal">✕</button>
+            </div>
+          </div>
+          <div class="terminal-body" id="terminal-body">
+            <div id="term-output"></div>
+            <div class="term-input-row">
+              <span class="term-prompt">
+                <span class="tp-user">hamza</span><span class="tp-sep">@</span><span class="tp-host">portfolio</span><span class="tp-colon">:</span><span class="tp-path">~/security</span><span class="tp-dollar">$</span>
+              </span>
+              <input type="text" id="term-input" class="term-input" spellcheck="false" autocomplete="off" placeholder="Type 'help'..." />
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /editor-with-terminal -->
+    </div><!-- /editor-container -->
+
+  </div><!-- /vsc-body -->
+
+  <!-- ═══ BOTTOM BAR ═══════════════════════════════════════════════ -->
+  <footer class="bottombar">
+    <div class="bb-left">
+      <a href="https://github.com/hamzaanwarrao" target="_blank" rel="noopener" class="bb-item">
+        <svg viewBox="0 0 16 16" width="14" height="14"><path fill-rule="evenodd" d="M11.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zM1 7.5a3.248 3.248 0 0 1 2.163-3.074c-.233-1.32.107-2.61.957-3.56A1.5 1.5 0 0 1 5.5 1h5a1.5 1.5 0 0 1 1.38.868c.85.946 1.19 2.245.957 3.564A3.25 3.25 0 0 1 15 8.5c0 2.26-1.54 3.5-3 3.5h-.25c-.44 0-.908-.14-1.274-.42l-.726.607V14a.75.75 0 0 1-.75.75H6a.75.75 0 0 1-.75-.75v-1.813l-.726-.607c-.366.28-.834.42-1.274.42H3c-1.46 0-3-1.24-3-3.5z" fill="currentColor"/></svg>
+        main
+      </a>
+      <div class="bb-item">
+        <svg viewBox="0 0 16 16" width="14" height="14"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="8" y1="4" x2="8" y2="8" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="10.5" r="1" fill="currentColor"/></svg>
+        0 &nbsp;
+        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 1L10 6H15L11 9.5L12.5 15L8 11.5L3.5 15L5 9.5L1 6H6Z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+        0
+      </div>
+    </div>
+    <div class="bb-right">
+      <!-- Dark / Light toggle -->
+      <label class="dark-light-toggle bb-item" title="Toggle light mode" id="dl-toggle-label">
+        <span class="dl-icon" id="dl-icon-moon">🌙</span>
+        <div class="dl-switch">
+          <input type="checkbox" id="dl-checkbox" onchange="toggleLightMode(this.checked)" />
+          <div class="dl-track"></div>
+          <div class="dl-thumb"></div>
+        </div>
+        <span class="dl-icon" id="dl-icon-sun">☀️</span>
+      </label>
+      <div class="bb-item bb-terminal" id="terminal-toggle-btn" onclick="toggleTerminal()" title="Toggle Terminal (Ctrl+`)">
+        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M2 3.5v9A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 12.5 2h-9A1.5 1.5 0 0 0 2 3.5zM6 6l2 2-2 2M9 10h2" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+      </div>
+      <div class="bb-item">
+        <svg viewBox="0 0 128 128" width="14" height="14"><path d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64c11.2 0 21.7-2.9 30.8-7.9L48.4 55.3v36.6h-6.8V41.8h6.8l50.5 75.8C116.4 106.2 128 86.5 128 64c0-35.3-28.7-64-64-64zm28.2 96.1l-6.8-9.7V41.8h6.8v54.3z" fill="currentColor"/></svg>
+        Powered by HTML/CSS/JS
+      </div>
+      <div class="bb-item">
+        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M12 2H4A2 2 0 0 0 2 4V12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-1 8.5l-1.5-1.5L11 7.5 12 9l-1 1.5zm-4.5-1l-2-2 1-1 1 1 3-3 1 1L6.5 9.5z" fill="currentColor"/></svg>
+        Prettier
+      </div>
+      <div class="bb-item">
+        <svg viewBox="0 0 16 16" width="14" height="14"><path d="M8 1.5A5.5 5.5 0 1 0 8 12.5 5.5 5.5 0 0 0 8 1.5zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-1.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" fill="currentColor"/></svg>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /app -->
+
+
+<!-- ═══ COMMAND PALETTE ════════════════════════════════════════════ -->
+<div class="cmd-palette-overlay" id="cmd-palette-overlay" style="display:none" onclick="closePalette(event)">
+  <div class="cmd-palette" id="cmd-palette">
+    <div class="cmd-palette-input-wrap">
+      <svg viewBox="0 0 16 16" width="16" height="16" class="cmd-search-icon"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.099zm-5.242 1.656a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z" fill="currentColor"/></svg>
+      <input type="text" id="cmd-input" class="cmd-input" placeholder="Search files by name" autocomplete="off" spellcheck="false" />
+    </div>
+    <div class="cmd-instructions">recently opened</div>
+    <ul class="cmd-list" id="cmd-list"></ul>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
